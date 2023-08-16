@@ -1,3 +1,7 @@
-const Places = () => {}
+import PlaceList from "../components/places/PlacesList";
 
-export default Places
+const Places = () => {
+  return <PlaceList places={[]} />;
+};
+
+export default Places;

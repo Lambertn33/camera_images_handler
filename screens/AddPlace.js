@@ -1,3 +1,7 @@
-const AddPlace = () => {}
+import PlaceForm from "../components/places/PlaceForm";
 
-export default AddPlace
+const AddPlace = () => {
+  return <PlaceForm />;
+};
+
+export default AddPlace;
