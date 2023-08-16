@@ -3,6 +3,7 @@ import { View, Text, TextInput, StyleSheet, ScrollView } from "react-native";
 
 import { Colors } from "../../constants/colors";
 import ImagePicker from "./ImagePicker";
+import { Button } from "react-native";
 
 const ImageForm = () => {
   const [title, setTitle] = useState("");
@@ -19,6 +20,14 @@ const ImageForm = () => {
         />
       </View>
       <ImagePicker />
+      <View style={styles.actions}>
+        <View style={styles.action}>
+          <Button title="Submit" />
+        </View>
+        <View style={styles.action}>
+          <Button title="Cancel" />
+        </View>
+      </View>
     </ScrollView>
   );
 };
@@ -44,6 +53,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     borderRadius: 4,
     fontSize: 18,
+  },
+  actions: {
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 16,
+    marginTop: 16,
+  },
+  action: {
+    flex: 1,
   },
 });
 

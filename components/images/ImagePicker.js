@@ -2,6 +2,7 @@ import { launchCameraAsync } from "expo-image-picker";
 import { useState } from "react";
 import { View, Button, Image, StyleSheet, Text } from "react-native";
 import { Colors } from "../../constants/colors";
+import { TouchableOpacity } from "react-native";
 
 const ImagePicker = () => {
   const [image, setImage] = useState(null);
@@ -20,16 +21,20 @@ const ImagePicker = () => {
     <>
       <View style={styles.imageContainer}>
         {!image ? (
-          <Text style={styles.emptyImageText}>No image selected</Text>
+          <TouchableOpacity onPress={pickImageHandler}>
+            <Text style={styles.emptyImageText}>Tap to upload an image</Text>
+          </TouchableOpacity>
         ) : (
           <Image source={{ uri: image }} style={styles.image} />
         )}
       </View>
-      <Button
-        title={image ? "Remove image" : "Take Image"}
-        onPress={image ? removeImageHandler : pickImageHandler}
-        color={image ? "red" : ""}
-      />
+      {image && (
+        <Button
+          title="Remove Image"
+          onPress={removeImageHandler}
+          color={"red"}
+        />
+      )}
     </>
   );
 };
