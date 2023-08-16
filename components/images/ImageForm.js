@@ -1,13 +1,51 @@
 import { useState } from "react";
-import { View, Text, TextInput, StyleSheet, ScrollView } from "react-native";
+import { useDispatch } from "react-redux";
+import {
+  Alert,
+  Button,
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
+import { useNavigation } from "@react-navigation/core";
 
 import { Colors } from "../../constants/colors";
 import ImagePicker from "./ImagePicker";
-import { Button } from "react-native";
+import { imagesActions } from "../../store/images-slice";
 
 const ImageForm = () => {
-  const [title, setTitle] = useState("");
-  const handleChangeTitle = (enteredTitle) => setTitle(enteredTitle);
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+
+  const [imageObject, setImageObject] = useState({
+    title: "",
+    imageUri: "",
+  });
+
+  const handleChangeInputHandler = (input, value) => {
+    setImageObject((prevState) => {
+      return {
+        ...prevState,
+        [input]: value,
+      };
+    });
+  };
+
+  const inputEmptyValidation = (input) => input.trim().length === 0;
+
+  const handleSubmitForm = () => {
+    if (
+      inputEmptyValidation(imageObject.imageUri) ||
+      inputEmptyValidation(imageObject.title)
+    ) {
+      Alert.alert("Error", "please provide the title and the image");
+      return;
+    }
+    dispatch(imagesActions.addNewImage(imageObject));
+    navigation.goBack();
+  };
 
   return (
     <ScrollView style={styles.form}>
@@ -15,14 +53,16 @@ const ImageForm = () => {
         <Text style={styles.label}>Title</Text>
         <TextInput
           style={styles.input}
-          value={title}
-          onChangeText={handleChangeTitle}
+          value={imageObject.title}
+          onChangeText={handleChangeInputHandler.bind(this, "title")}
         />
       </View>
-      <ImagePicker />
+      <ImagePicker
+        onPickImage={handleChangeInputHandler.bind(this, "imageUri")}
+      />
       <View style={styles.actions}>
         <View style={styles.action}>
-          <Button title="Submit" />
+          <Button title="Submit" onPress={handleSubmitForm} />
         </View>
         <View style={styles.action}>
           <Button title="Cancel" />

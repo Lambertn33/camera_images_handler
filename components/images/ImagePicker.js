@@ -1,9 +1,16 @@
 import { launchCameraAsync } from "expo-image-picker";
 import { useState } from "react";
-import { View, Button, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  Button,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import { Colors } from "../../constants/colors";
 
-const ImagePicker = () => {
+const ImagePicker = ({ onPickImage }) => {
   const [image, setImage] = useState(null);
   const pickImageHandler = async () => {
     const pickedImage = await launchCameraAsync({
@@ -11,7 +18,9 @@ const ImagePicker = () => {
       aspect: [16, 9],
       quality: 0.5,
     });
-    setImage(pickedImage.assets[0].uri);
+    const { uri } = pickedImage.assets[0];
+    setImage(uri);
+    onPickImage(uri);
   };
 
   const removeImageHandler = () => setImage(null);

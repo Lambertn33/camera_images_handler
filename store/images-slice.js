@@ -12,7 +12,7 @@ const imagesSlice = createSlice({
     addNewImage(state, action) {
       const newImageObject = new ImageModel(
         action.payload.title,
-        action.payload.imageUrl
+        action.payload.imageUri
       );
       state.images.push(newImageObject);
     },
