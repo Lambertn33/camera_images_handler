@@ -4,7 +4,7 @@ import { View, Text, TextInput, StyleSheet, ScrollView } from "react-native";
 import { Colors } from "../../constants/colors";
 import ImagePicker from "./ImagePicker";
 
-const PlaceForm = () => {
+const ImageForm = () => {
   const [title, setTitle] = useState("");
   const handleChangeTitle = (enteredTitle) => setTitle(enteredTitle);
 
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PlaceForm;
+export default ImageForm;

@@ -2,8 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Places from "./screens/Places";
-import AddPlace from "./screens/AddPlace";
+import Images from "./screens/Images";
+import AddImage from "./screens/AddImage";
 import IconButton from "./components/UI/IconButton";
 
 import { Colors } from "./constants/colors";
@@ -27,26 +27,26 @@ export default function App() {
           }}
         >
           <Stack.Screen
-            name="placesList"
-            component={Places}
+            name="imagesList"
+            component={Images}
             options={({ navigation }) => ({
-              title: "Your favorites places",
+              title: "Your favorites camera images",
               headerRight: ({ tintColor }) => (
                 <IconButton
                   color={tintColor}
                   size={30}
                   icon="add"
-                  onPress={() => navigation.navigate("addPlace")}
+                  onPress={() => navigation.navigate("addImage")}
                 />
               ),
             })}
           ></Stack.Screen>
           <Stack.Screen
-            name="addPlace"
-            component={AddPlace}
+            name="addImage"
+            component={AddImage}
             options={{
               presentation: "modal",
-              title: "Add new place",
+              title: "Add new image",
             }}
           ></Stack.Screen>
         </Stack.Navigator>
