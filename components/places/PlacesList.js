@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   placesEmptyText: {
-    fontSize: 22,
-    fontWeight: "400",
+    fontSize: 18,
+    fontWeight: "600",
   },
 });
 
