@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Text, TextInput, StyleSheet, ScrollView } from "react-native";
 
 import { Colors } from "../../constants/colors";
-import ImagePicker from "../UI/ImagePicker";
+import ImagePicker from "./ImagePicker";
 
 const PlaceForm = () => {
   const [title, setTitle] = useState("");
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     marginBottom: 6,
   },
-  
+
   input: {
     backgroundColor: Colors.primary200,
     paddingVertical: 6,
