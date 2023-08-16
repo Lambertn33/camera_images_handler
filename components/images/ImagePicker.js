@@ -1,8 +1,7 @@
 import { launchCameraAsync } from "expo-image-picker";
 import { useState } from "react";
-import { View, Button, Image, StyleSheet, Text } from "react-native";
+import { View, Button, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Colors } from "../../constants/colors";
-import { TouchableOpacity } from "react-native";
 
 const ImagePicker = () => {
   const [image, setImage] = useState(null);
