@@ -6,6 +6,8 @@ import store from "./store";
 
 import Images from "./screens/Images";
 import AddImage from "./screens/AddImage";
+import ImageDetails from "./screens/ImageDetails";
+
 import IconButton from "./components/UI/IconButton";
 
 import { Colors } from "./constants/colors";
@@ -19,6 +21,7 @@ export default function App() {
       <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator
+          initialRouteName="imagesList"
             screenOptions={{
               headerStyle: {
                 backgroundColor: Colors.primary500,
@@ -51,6 +54,10 @@ export default function App() {
                 presentation: "modal",
                 title: "Add new image",
               }}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="imageDetails"
+              component={ImageDetails}
             ></Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>

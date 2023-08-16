@@ -1,14 +1,25 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/core";
 import { Colors } from "../../constants/colors";
 
-const ImageItem = ({ image, onPress }) => {
+const ImageItem = ({ image }) => {
+  const navigation = useNavigation();
+
+  const navigateToImageDetailsHandler = () => {
+    navigation.navigate("imageDetails", {
+      image: image,
+    });
+  };
   return (
-    <View style={styles.itemContainer}>
+    <Pressable
+      style={styles.itemContainer}
+      onPress={navigateToImageDetailsHandler}
+    >
       <Image source={{ uri: image.imageUri }} style={styles.itemImage} />
       <View style={styles.itemTitleContainer}>
         <Text style={styles.itemTitle}>{image.title}</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
